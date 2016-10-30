@@ -12,6 +12,7 @@ public class Connect4Controller implements ActionListener {
 	private int size;
 	private boolean player1;
 	private boolean validMove;
+	private boolean won;
 
 
 	public Connect4Controller(int size, int win) {
@@ -60,7 +61,7 @@ public class Connect4Controller implements ActionListener {
 		validMove = false;
 		}
 		a.add(move, column, player1);
-		a.checkWinner();
+		won = a.checkWinner();
 		//TODO check winner
 
 	}

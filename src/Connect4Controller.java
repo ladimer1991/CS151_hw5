@@ -1,4 +1,3 @@
-import java.awt.Color;
 import java.awt.FlowLayout;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
@@ -10,13 +9,13 @@ import javax.swing.JPanel;
 public class Connect4Controller implements ActionListener {
 	static JButton b[][];
 	CheckPosition a;
-	int size;
-	boolean player1;
-	boolean validMove;
+	private int size;
+	private boolean player1;
+	private boolean validMove;
 
 
-	public Connect4Controller(int size) {
-		a = new CheckPosition();
+	public Connect4Controller(int size, int win) {
+		a = new CheckPosition(size, win);
 		this.size = size; 
 		b = new JButton[size][size];
 		player1 = true;
@@ -49,7 +48,6 @@ public class Connect4Controller implements ActionListener {
 		int row = (pos)/ size;
 		int column = pos % size;
 		
-		System.out.println(row);
 		int move = checkRow(row, column);
 		if (validMove) {
 			if (player1) {
@@ -61,8 +59,10 @@ public class Connect4Controller implements ActionListener {
 			}
 		validMove = false;
 		}
+		a.add(move, column, player1);
+		a.checkWinner();
 		//TODO check winner
-		
+
 	}
 	
 	private int checkRow(int row, int col) {
@@ -79,7 +79,14 @@ public class Connect4Controller implements ActionListener {
 	
 	public JPanel winner() {
 		JPanel win = new JPanel(new FlowLayout());
-		JLabel winner = new JLabel("GAMEOVER? False");
+		JLabel winner = new JLabel("");
+
+//		if (won) {
+			winner.setText("GAMEOVER? true");
+	//	} else {
+			winner.setText("GAMEOVER? false");
+//		}
+		
 		win.add(winner);
 		
 		//TODO Change JLabel to winner

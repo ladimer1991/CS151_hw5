@@ -64,7 +64,7 @@ public class CheckPosition {
 	private void checkWinDiag() {
 		
 		int countA, countB;
-
+/*
 		// top-left to bottom-right - green diagonals
 		for(int i = 0; i <= size - winner; i++){
 		    countA = countB = 0;
@@ -83,7 +83,7 @@ public class CheckPosition {
 		for(int i = size-1; i >= winner-1; i--){	
 		    countA = countB = 0;
 		    int row, col;
-		    for( row = i, col = 0; row >= 0 && col < size; row--, col++){
+		    for( row = i, col = 0; row >= winner-1 && col < size; row--, col++){
 		        if (a[row][col] == 1 || a[row][col] == 2) {
 		        	if(a[row][col] == 1) countA++; 
 		        	if(a[row][col] == 2) countB++;
@@ -93,13 +93,12 @@ public class CheckPosition {
 		        }
 		    }
 		} // end for
-		
-/* still problem with one diagonal
+	*/	
 		// top-right to bottom-left 
-		for(int  i = size-1; i >= winner-1; i--){
+		for(int  i = 1; i <= size-winner; i++){
 		    countA = countB = 0;
 		    int row, col;
-		    for( row = size-1, col = 1; row >= 0 && col < size; row--, col++) {
+		    for( row = size-1, col = i; row >= winner-1 && col < size; row--, col++) {
 		        if (a[row][col] == 1 || a[row][col] == 2) {
 		        	if(a[row][col] == 1) countA++;
 		        	if(a[row][col] == 2) countB++;
@@ -109,8 +108,8 @@ public class CheckPosition {
 		        }
 		    } // end for
 		} // end for	
-*/
-		
+
+		/*
 		// top-left to bottom-right - red diagonals
 		for(int  i = 1; i <= size - winner; i++){
 		    countA = countB = 0;
@@ -125,6 +124,6 @@ public class CheckPosition {
 		        }
 		    } // end for
 		} // end for
-
+*/
 	} // end method
 }

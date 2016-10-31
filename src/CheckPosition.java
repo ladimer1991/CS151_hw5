@@ -28,7 +28,7 @@ public class CheckPosition {
 	}
 	
 	private void checkWinRow() {
-		/*
+		
 		int count = 0;
 		for (int i = 0; i < size; i++) {
 			for (int j = 0; j < size-1; j++) {
@@ -41,11 +41,11 @@ public class CheckPosition {
 			} 
 			count = 0;
 		}
-		*/
+		
 	}
 	
 	private void checkWinColumn() {
-		/*
+		
 		int count = 0;
 		for (int i = 0; i < size; i++) {
 			for (int j = 0; j < size-1; j++) {
@@ -58,13 +58,13 @@ public class CheckPosition {
 			} 
 			count = 0;
 		}
-			*/	
+				
 	}
 	
 	private void checkWinDiag() {
 		
 		int countA, countB;
-/*
+		
 		// top-left to bottom-right - green diagonals
 		for(int i = 0; i <= size - winner; i++){
 		    countA = countB = 0;
@@ -93,7 +93,7 @@ public class CheckPosition {
 		        }
 		    }
 		} // end for
-	*/	
+		
 		// top-right to bottom-left 
 		for(int  i = 1; i <= size-winner; i++){
 		    countA = countB = 0;
@@ -109,7 +109,7 @@ public class CheckPosition {
 		    } // end for
 		} // end for	
 
-		/*
+		
 		// top-left to bottom-right - red diagonals
 		for(int  i = 1; i <= size - winner; i++){
 		    countA = countB = 0;
@@ -124,6 +124,6 @@ public class CheckPosition {
 		        }
 		    } // end for
 		} // end for
-*/
+
 	} // end method
 }

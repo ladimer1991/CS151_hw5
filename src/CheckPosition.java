@@ -13,7 +13,7 @@ public class CheckPosition {
 	}
 	
 	public void add(int x, int y, boolean player) {
-		int play = player?1:2;
+		int play = player?2:1;
 		a[x][y] = play;
 	}
 	
@@ -28,7 +28,7 @@ public class CheckPosition {
 	}
 	
 	private void checkWinRow() {
-		
+		/*
 		int count = 0;
 		for (int i = 0; i < size; i++) {
 			for (int j = 0; j < size-1; j++) {
@@ -41,11 +41,11 @@ public class CheckPosition {
 			} 
 			count = 0;
 		}
-		
+		*/
 	}
 	
 	private void checkWinColumn() {
-		
+		/*
 		int count = 0;
 		for (int i = 0; i < size; i++) {
 			for (int j = 0; j < size-1; j++) {
@@ -58,38 +58,73 @@ public class CheckPosition {
 			} 
 			count = 0;
 		}
-				
+			*/	
 	}
 	
 	private void checkWinDiag() {
 		
-		int count = 0;
-		for (int i = 0; i < size-1; i++) {
-			for (int j = 0; j < size-1; j++) {
-				
-				if (a[i][j] == a[i+1][j+1]) {
-					if (a[i][j] != 0) {
-						count++;
-						if (count == winner-1) won = true;
-					} //end if
-				} //end if
-			} // end j
-//			count = 0;
+		int countA, countB;
+
+		// top-left to bottom-right - green diagonals
+		for(int i = 0; i <= size - winner; i++){
+		    countA = countB = 0;
+		    int row, col;
+		    for( row = i, col = 0; row < size && col < size; row++, col++ ){
+		        if (a[row][col] == 1 || a[row][col] == 2) {
+		        	if(a[row][col] == 1) countA++; 
+		        	if(a[row][col] == 2) countB++;
+		        	if(countA >= winner || countB >= winner)  won = true;
+		        }  else {
+		            countA = countB = 0;
+		        }
+		    }
 		}
+	
+		for(int i = size-1; i >= winner-1; i--){	
+		    countA = countB = 0;
+		    int row, col;
+		    for( row = i, col = 0; row >= 0 && col < size; row--, col++){
+		        if (a[row][col] == 1 || a[row][col] == 2) {
+		        	if(a[row][col] == 1) countA++; 
+		        	if(a[row][col] == 2) countB++;
+		        	if(countA >= winner || countB >= winner)  won = true;
+		        }  else {
+		            countA = countB = 0;
+		        }
+		    }
+		} // end for
 		
-		/*
-		count = 0;
-		for (int i = size; i > 1; i--) {
-			for (int j = size; j > 1; j--) {
-				if (a[i][j] == a[i-1][j-1]) {
-					if (a[i][j] != 0) {
-						count++;
-						if (count == winner-1) won = true;
-					}
-				}
-			} 
-			count = 0;
-		}
-		*/
-	}
+/* still problem with one diagonal
+		// top-right to bottom-left 
+		for(int  i = size-1; i >= winner-1; i--){
+		    countA = countB = 0;
+		    int row, col;
+		    for( row = size-1, col = 1; row >= 0 && col < size; row--, col++) {
+		        if (a[row][col] == 1 || a[row][col] == 2) {
+		        	if(a[row][col] == 1) countA++;
+		        	if(a[row][col] == 2) countB++;
+		        	if(countA >= winner || countB >= winner) won = true;
+		        }  else {
+		            countA = countB = 0;
+		        }
+		    } // end for
+		} // end for	
+*/
+		
+		// top-left to bottom-right - red diagonals
+		for(int  i = 1; i <= size - winner; i++){
+		    countA = countB = 0;
+		    int row, col;
+		    for( row = 0, col = i; row < size && col < size; row++, col++ ) {
+		        if (a[row][col] == 1 || a[row][col] == 2) {
+		        	if(a[row][col] == 1) countA++;
+		        	if(a[row][col] == 2) countB++;
+		        	if(countA >= winner || countB >= winner) won = true;
+		        }  else {
+		            countA = countB = 0;
+		        }
+		    } // end for
+		} // end for
+
+	} // end method
 }

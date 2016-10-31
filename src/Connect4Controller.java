@@ -62,7 +62,6 @@ public class Connect4Controller implements ActionListener {
 		}
 		a.add(move, column, player1);
 		won = a.checkWinner();
-		//TODO check winner
 
 	}
 	

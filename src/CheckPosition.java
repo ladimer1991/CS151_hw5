@@ -4,11 +4,13 @@ public class CheckPosition {
 	private int size;
 	private int winner;
 	private boolean won;
-
+	
+	
+//constructor
 	public CheckPosition(int x, int y) {
 		a = new int[x][x];
 		size = x;
-		winner = y;
+		winner = y;   
 		won = false;
 	}
 	
